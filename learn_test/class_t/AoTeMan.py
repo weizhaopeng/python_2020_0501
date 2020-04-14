@@ -10,11 +10,19 @@ from random import random
 物理攻击：攻击力-护甲*1.5，不能小于0
 魔法攻击：攻击力-魔抗，不能小于0
 """
+
+
 def main():
+    """
+    通过实例化两个角色，让他们进行战斗，通过循环得到结果
+    :return:
+    """
     pass
+
 
 if __name__ == '__main__':
     main()
+
 
 class Role(object, metaclass=ABCMeta):
     """定义角色具备名字, 攻击力和血量基础属性"""
@@ -104,7 +112,7 @@ class Ultraman(Role):
     def critRate(self, newCritRate):
         self._critRate = newCritRate
 
-    def _oneAttack(self, enemy):
+    def attack(self, enemy):
         """
         攻击的规则是：
         如果蓝量到达100，这次攻击启用魔法攻击，无视护甲，并且必定暴击
@@ -119,10 +127,10 @@ class Ultraman(Role):
         else:
             damage = self._attackPower - (enemy.armor * 1.5)
             self._magicPower += 30
-        if self._critRate < random(0, 1):
+        if self._critRate < random():
             damage *= 2
             isCrit = True
-        enemy.hitPower -= damage if damage > 0 else 0
+        enemy.hitPoint -= damage if damage > 0 else 0
         return damage, isCrit
 
     def __str__(self):
@@ -152,14 +160,14 @@ class Monster(Role):
     def critRate(self, newCritRate):
         self._critRate = newCritRate
 
-    def oneAttack(self, enmey):
+    def attack(self, enmey):
         isCrit = False
-        damage = self._attackPower - enmey._armor * 1.5
-        if random(0, 1) < self._critRate:
+        damage = self._attackPower - enmey.armor * 1.5
+        if random() < self._critRate:
             damage *= 2
             isCrit = True
 
-        enmey._hitPoint -= damage if damage > 0 else 0
+        enmey.hitPoint -= damage if damage > 0 else 0
         return damage, isCrit
 
     def __str__(self):
