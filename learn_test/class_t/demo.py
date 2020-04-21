@@ -3,7 +3,7 @@ from learn_test.class_t.Fighting import Fighting
 
 def main():
     role1 = Ultraman("迪迦奥特曼", 10000, 100, 20, 20, 0, 0.2)
-    role2 = Monster("加纳", 20000, 40, 40, 40, 0.05)
+    role2 = Monster("加纳", 20000, 81, 40, 40, 0.05)
 
     arena = Fighting()
     winner = arena.duel(role1, role2)

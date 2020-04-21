@@ -131,7 +131,7 @@ class Ultraman(Role):
             damage *= 2
             isCrit = True
         enemy.hitPoint -= damage if damage > 0 else 0
-        return damage, isCrit
+        return damage, "暴击" if isCrit else "未暴击"
 
     def __str__(self):
         return "%s奥特曼：\n" \
@@ -168,7 +168,7 @@ class Monster(Role):
             isCrit = True
 
         enmey.hitPoint -= damage if damage > 0 else 0
-        return damage, isCrit
+        return damage, "暴击" if isCrit else "未暴击"
 
     def __str__(self):
         return "%s怪兽\n" \
