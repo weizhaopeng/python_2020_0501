@@ -9,6 +9,7 @@ def main():
     regexReturn = match(r'a.b', string1)
     if regexReturn is not None:
         print(regexReturn.groups())
+        print(regexReturn)
 
     # verify the username and qq in effect
     # username = input("please input username")
@@ -69,7 +70,14 @@ def main():
     while '' in sentence_list:
         sentence_list.remove('')
     print(sentence_list)
-    
+
+def main1():
+    pattern = r'(b.(c|a|h))*bc(?#听说这是注释)'
+    string = 'b7cbyab8hbc,c, b c b2c, bctheb c'
+    match = re.match(pattern, string)
+    print(match)
+
+    string = 'bccbhcbgcb,c, b c b2c, bctheb c'
 
 if __name__ == '__main__':
-    main()
+    main1()
